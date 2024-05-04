@@ -2,6 +2,8 @@
 
 此脚本必须使用 PowerShell 才能工作，涉及到的所有工作路径，配置文件内容，输入的变量等**均不能含有中文或英文单引号**，否则会崩溃
 
+ImageMagick 下载链接：https://imagemagick.org/script/download.php
+
 ## 工作流程
 
 1.把需要处理的图片拖到.bat文件上面，脚本会扫描当前目录下所有符合要求的文件，但是不会遍历子目录
