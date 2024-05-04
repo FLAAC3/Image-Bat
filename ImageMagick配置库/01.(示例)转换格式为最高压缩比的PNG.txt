@@ -1,0 +1,17 @@
+;若英文分号写在行开头则表示注释，脚本会忽略这一行的内容，配置文件中不可以含有英文或中文单引号
+;command不能为空，后面写exe支持的命令行，[*in]表示输入文件，[*out]表示输出文件，注意前后不要跟任何字符，例如 _[*out]_ 是错误的
+;command中如果要输入双引号，需要转义为\"，同样如果要输入反斜杠也需要转义为\\
+command=[*in] -quality 100 [*out]
+
+;output_suffix不能为空，直接写输出文件的小写后缀名，例如 jpeg ，但 .jpeg 是错误的
+output_suffix=png
+
+;以下三个变量均可以为空，配置文件中的优先级高于脚本的默认值
+;是否使文件创建日期不变
+;keep_create_date=true
+
+;是否使文件修改日期不变
+;keep_revise_date=true
+
+;是否在文件处理完成后删除源文件
+;delete_source_file=false
