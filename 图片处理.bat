@@ -136,7 +136,7 @@ if %errorlevel% EQU 1 (if "%cd:~-1%" EQU "\" (set "out_dir=%cd%%out_dir%") else 
 exit /b 0
 
 :exec_command
-powershell -ExecutionPolicy Bypass -Command "$json = [System.IO.File]::ReadAllLines('%conf_dir%\temp.json', [System.Text.Encoding]::UTF8)[0]; $object = $json | ConvertFrom-Json; $com = $object.'command'.Trim(); $q = [char]34; $m = '(\S*?(?<!\\)'+$q+'.*?(?<!\\)'+$q+'\S*|\S+)'; $in = $q+'%original_name%'+$q; $out = $q+'%output_fullname%'+$q; $com = $com -replace '\[\*in\]', $in; $com = $com -replace '\[\*out\]', $out; $com = ($com | Select-String -Pattern $m -AllMatches).Matches.Value; & '%convert_exe_path%' $com"
+powershell -ExecutionPolicy Bypass -Command "$json = [System.IO.File]::ReadAllLines('%conf_dir%\temp.json', [System.Text.Encoding]::UTF8)[0]; $object = $json | ConvertFrom-Json; $com = $object.'command'.Trim(); $q = [char]34; $m = '(?:\S*?(?<!\\)'+$q+'.*?(?<!\\)'+$q+'(?:[^'+$q+'\s]*(?:\\'+$q+'))*|\S)+'; $in = $q+'%original_name%'+$q; $out = $q+'%output_fullname%'+$q; $com = $com -replace '\[\*in\]', $in; $com = $com -replace '\[\*out\]', $out; $com = ($com | Select-String -Pattern $m -AllMatches).Matches.Value; & '%convert_exe_path%' $com"
 exit /b
 
 :print_original_name
